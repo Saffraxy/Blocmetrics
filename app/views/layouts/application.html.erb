@@ -7,11 +7,12 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body data-no-turbolink="true" >
   <div class="container">
     <ul class="nav nav-tabs">
      <li><%= link_to "Home", welcome_index_path %></li>
      <li><%= link_to "About", welcome_about_path %></li>
+     <li><%= link_to "Registered Applications", root_path %></li>
 
      <div class="pull-right user-info">
         <% if user_signed_in? %>

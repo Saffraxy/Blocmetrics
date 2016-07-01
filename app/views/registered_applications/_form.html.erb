@@ -1,0 +1,9 @@
+<h4>Add a registered application</h4>
+<%= form_for [current_user, registered_application], remote: true do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Enter registered application here:", class: 'sr-only' %>
+    <%= f.text_field :name, class: 'form-control', placeholder: "Enter a name for the new registered application" %>
+    <%= f.text_field :url, class: 'form-control', placeholder: "Enter the URL for the registered application" %>
+</div>
+  <%= f.submit "Submit Item", class: 'btn btn-default pull-right' %>
+<% end %>

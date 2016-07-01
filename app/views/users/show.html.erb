@@ -1,0 +1,28 @@
+<h1>Welcome <%=current_user.email %>!</h1>
+<p id="index-title">This page lists all the applications that you have registered with us.</p>
+
+    <div class="media">
+      <br />
+      <div class="media-body">
+        <h2 class="media-heading">Your applications: </h2>
+        <small>
+          <div class='js-registeredapplications-count'><%= pluralize(current_user.registered_applications.count, 'registered application') %></div>
+        </small>
+        <div>
+        <h3>Registered Applications</h3>
+        <table class="table table-striped js-registeredapplications">
+          <tr>
+            <th>Application Name</th>
+            <th>URL</th>
+            <th></th>
+          </tr>
+          <%= render current_user.registered_applications %>
+        </table>
+        </div>
+        <% if current_user %>
+        <div class='new-registeredapplication'>
+          <%= render 'registered_applications/form', registered_application: RegisteredApplication.new %>
+        </div>
+        <% end %>
+    </div>
+    </div>

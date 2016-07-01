@@ -1,0 +1,7 @@
+<% if @registered_application.valid? %>
+  $('.js-registeredapplications').append("<%= escape_javascript(render(@registered_application)) %>");
+  $('.new-registeredapplication').html("<%= escape_javascript(render partial: 'registered_applications/form', locals: { user: @user, registered_application: @new_registered_application}) %>");
+<% else %>
+  $('.flash').append("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash.now[:alert] %></div>");
+  $('.new-registeredapplication').html("<%= escape_javascript(render partial: 'registered_applications/form', locals: { user: @user, registered_application: @registered_application }) %>");
+<% end %>

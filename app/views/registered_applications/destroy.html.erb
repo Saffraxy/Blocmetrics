@@ -1,0 +1,6 @@
+<% if @registered_application.destroyed? %>
+  $("#registeredapplication-<%= @registered_application.id %>").hide();
+  $('.js-registeredapplications-count').html("<%= pluralize(@registered_application.user.registered_applications.count, 'registered_application') %>");
+<% else %>
+  $('.flash').append("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash.now[:alert] %></div>");
+<% end %>
