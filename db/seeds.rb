@@ -26,6 +26,16 @@ users = User.all
   url: Faker::Internet.url
   )
 end
+registered_applications = RegisteredApplication.all
+
+#create events for registered apps;
+25.times do
+  Event.create!(
+  registered_application: registered_applications.sample,
+  eventname: Faker::StarWars.character
+  )
+end
 
 puts "Seed Finished"
 puts "#{RegisteredApplication.count} applications registered"
+puts "#{Event.count} events created"

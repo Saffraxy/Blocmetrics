@@ -1,5 +1,6 @@
 <tr id="registered_application-<%= registered_application.id %>">
   <td><%= registered_application.name %></td>
   <td><%= registered_application.url %></td>
+  <td><%= link_to registered_application.name, registered_application %>
   <td><%= link_to "Delete application", registered_application, method: :delete, remote: true%></td>
 </tr>

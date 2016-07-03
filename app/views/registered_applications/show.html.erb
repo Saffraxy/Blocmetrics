@@ -1,0 +1,20 @@
+<h1><%= @registered_application.name %></h1>
+<br/>
+ <div class="row">
+   <div class="col-md-8">
+     <p class="lead">Website address: <%= link_to @registered_application.url, "http://#{@registered_application.url}", :target => '_blank' %></p>
+       <div class="media">
+           <h4 class="media-heading">
+             <h1> Events </h1>
+                <% @events.each do |event| %>
+                  <div>
+                    <%= event[0] %><span class="badge"><%= event[1].count %></span>
+                  </div>
+                <% end %>
+             <small>
+               <div><%= pluralize(@registered_application.events.count, 'event') %></div>
+             </small>
+           </h4>
+         </div>
+       </div>
+   </div>
