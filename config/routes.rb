@@ -19,6 +19,14 @@ Rails.application.routes.draw do
   resources :registered_applications, only: [] do
     resources :events, only: [:create]
   end
+
+  #  namespace keeps the API routes separated from the rest of the app routes.
+  #   defaults: { format: :json} tells your route to expect to receive requests in JSON form.
+   namespace :api, defaults: { format: :json } do
+     match '/events', to: 'events#preflight', via: [:options]
+# Blocmetrics' API only needs to support one route to record new events.
+     resources :events, only: [:create]
+   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
