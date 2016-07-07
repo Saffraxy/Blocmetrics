@@ -8,7 +8,9 @@
              <h1> Events </h1>
                 <%= pie_chart @registered_application.events.group(:eventname).count %>
                   <div>
-                    <%= line_chart @registered_application.events.group_by_day(:created_at).count %>
+                    <% if Rails.env == "production" %>
+                      <%= line_chart @registered_application.events.group_by_day(:created_at).count %>
+                    <% end %>
                   </div>
                 <% @events.each do |event| %>
                   <div>
