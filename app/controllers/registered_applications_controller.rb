@@ -9,11 +9,6 @@ class RegisteredApplicationsController < ApplicationController
     @events = @registered_application.events.group_by(&:eventname)
   end
 
-#  def new
-#    @user = current_user
-#    @registered_application = RegisteredApplication.new
-#  end
-
   def create
       @registered_application = current_user.registered_applications.new(registered_application_params)
       @new_registered_application = RegisteredApplication.new
@@ -37,11 +32,6 @@ class RegisteredApplicationsController < ApplicationController
         flash[:notice] = "Registered application was deleted."
       else
         flash[:alert] = "Registered application couldn't be deleted. Try again."
-      end
-
-      respond_to do |format|
-        format.html
-        format.js
       end
     end
 
